@@ -11,6 +11,9 @@ function Address(street, city, county) {
   this.city = city;
   this.county = county;
 }
+Address.prototype.fullAddress = function() {
+  return this.street + ", " + this.city + ", " + this.county;
+}
 
 
 // user interface logic
@@ -63,5 +66,12 @@ $(".new-address").each(function() {
   var inputtedCounty = $(this).find("input.new-county").val();
   var newAddress = new Address(inputtedStreet, inputtedCity, inputtedCounty);
   newContact.addresses.push(newAddress);
+});
+...
+
+...
+$("ul#addresses").text("");
+newContact.addresses.forEach(function(address) {
+  $("ul#addresses").append("<li>" + address.fullAddress () + "</li>");
 });
 ...
